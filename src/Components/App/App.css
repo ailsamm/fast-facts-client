@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+:root {
+    --main-accent-color: #8DA;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+.app {
+  text-align: center;
+  background-color: #eeeeee;
+}
+
+.appButton {
+    margin: 1vh 0.5vw;
+    font-family: "Nunito", sans-serif;
+    font-size: 1em;
+    color: black;
+    border: 2px solid #d2d2d2;
+    border-radius: 5px;
+    padding: 6px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.appButton:hover {
+    cursor: pointer;
+}
+
+.deleteButton {
+    border-color: #c242429f;
+}
+
+.deleteButton:hover {
+    background: #c242429f;
+    color: #FFF;
+}
+
+.playButton {
+    border-color: var(--main-accent-color);
+}
+
+.playButton:hover {
+    background: var(--main-accent-color);
+    color: #FFF;
+}
+
+.addQuestion__trueOrFalseContainer {
+    display: flex;
+}
+
+.addQuestion__trueOrFalseOption {
+    font-size: 3em;
+    height: 10vw;
+    width: 10vw;
+    line-height: 10vw;
+    border: 1px solid #d5d5d5;
+    border-radius: 10%;
+    color: #4f4f4f;
+}
+
+.addQuestion__trueOrFalseOption:hover {
+    cursor: pointer;
+}
+
+.addQuestion__false:hover, .addQuestion__false.trueFalseActive {
+    background-color: #c242429f;
+}
+
+.addQuestion__true:hover, .addQuestion__true.trueFalseActive {
+    background-color: var(--main-accent-color);
+}

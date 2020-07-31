@@ -1,0 +1,11 @@
+.library {
+    margin: 0vh 10vw;
+    display: grid;
+    grid-template-columns: repeat(4, 20vw);
+}
+
+.episodeData {
+    padding: 8px 4px;
+    display: flex;
+    align-items: center;
+}

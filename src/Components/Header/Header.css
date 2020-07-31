@@ -1,0 +1,27 @@
+@import '../App/App.css';
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.header a {
+    text-decoration: none;
+    color: #7d7d7d;
+}
+
+.header__link {
+    margin-bottom: 0;
+}
+
+.header__link:hover, .header a.active {
+    color: var(--main-accent-color);
+}
+
+.header a.active {
+    
+    padding: 0;
+    border-bottom: 1px solid var(--main-accent-color);
+}
