@@ -1,5 +1,5 @@
 const CONFIG = {
-    serverUrl: "http://localhost:8000/api",
+    serverUrl: "https://stark-harbor-43556.herokuapp.com/api",
 }
 
 export default CONFIG;
