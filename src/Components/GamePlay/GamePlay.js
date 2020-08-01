@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppContext from '../../AppContext';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import Snackbar from '@material-ui/core/Snackbar';
 import './GamePlay.css';
 
 export default class GamePlay extends Component {
@@ -15,7 +16,9 @@ export default class GamePlay extends Component {
             episodeName: "",
             questionCount: 0,
             currentQuestion: 1,
-            currentScore: 0
+            currentScore: 0,
+            snackbarOpen: false,
+            snackbarMessage: ""
         }
     }
 
@@ -28,6 +31,18 @@ export default class GamePlay extends Component {
                 questionCount: episode.episode_questions.length
             });
         }
+    }
+
+    renderSnackbarMessage() {
+        return (
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                open={this.state.snackbarOpen}
+                onClose={() => this.handleSnackbarClose()}
+                message={this.state.snackbarMessage}
+                autoHideDuration={2000}
+            />
+        )
     }
 
     renderInfoHeader() {
@@ -51,7 +66,15 @@ export default class GamePlay extends Component {
     submitAnswer = (answer, correctAnswer) => {
         this.setState({
             currentScore: answer === correctAnswer ? this.state.currentScore + 1 : this.state.currentScore,
-            currentQuestion: this.state.currentQuestion + 1
+            currentQuestion: this.state.currentQuestion + 1,
+            snackbarOpen: true,
+            snackbarMessage: answer === correctAnswer ? "CORRECT!" : "INCORRECT"
+        })
+    }
+
+    handleSnackbarClose = () => {
+        this.setState({
+            snackbarOpen: false
         })
     }
 
@@ -97,6 +120,7 @@ export default class GamePlay extends Component {
                         : this.renderEndPage()
                     }
                 </div>
+                {this.renderSnackbarMessage()}
             </div>
         )
     }
