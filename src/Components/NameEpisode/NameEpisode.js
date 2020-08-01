@@ -15,7 +15,6 @@ export default class NameEpisode extends Component {
     }
 
     handleSubmit = e => {
-        console.log("got in handle submit");
         e.preventDefault();
         this.props.updateEpisodeName(this.state.episodeName);
     }

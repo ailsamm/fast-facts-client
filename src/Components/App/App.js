@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AppContext from '../../AppContext';
 import STORE from '../../STORE';
+import { fetchData, deleteEpisodeInDb, addNewEpisodeInDb } from '../../requestHandler';
 import './App.css';
 
 // Main app handler component - handles communication between client and server
@@ -16,23 +17,28 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            episodes: STORE.episodes,
-        })
+        fetchData()
+            .then(episodes => {
+                this.setState({
+                    episodes
+                })
+            })  
+            .catch(e => console.log(e));
+        
     }
 
     addNewEpisode = newEpisode => {
+        addNewEpisodeInDb(newEpisode)
         let newEpisodes = [newEpisode, ...this.state.episodes];
         this.setState({
             episodes: newEpisodes
         });
-        // add connection to server / DB
     }
 
     deleteEpisode = id => {
+        deleteEpisodeInDb(id);
         let episodes = this.state.episodes.filter(episode => episode.episode_id !== id);
         this.setState({ episodes });
-        // add connection to server / DB
     }
  
     render() {
